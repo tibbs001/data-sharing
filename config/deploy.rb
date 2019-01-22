@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.8.2"
 
-set :application, "aact-admin"
+set :application, "data-sharing"
 
 # Default branch is :master
 ask :branch, 'development'

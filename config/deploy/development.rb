@@ -35,7 +35,7 @@
 #
 # Global options
 # --------------
-  set :repo_url, "git@github.com:tibbs001/aact-admin-1.git"
+  set :repo_url, "git@github.com:tibbs001/data-sharing.git"
   set :deploy_to, '/srv/web/aact-dev.oit.duke.edu'
 #
 # The server-based syntax can be used to override options:
