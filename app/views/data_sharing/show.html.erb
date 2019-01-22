@@ -1,0 +1,76 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
+
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+
+<script>
+  $(document).ready(function () {
+      (function ($) {
+          $('#filter').keyup(function () {
+              var rex = new RegExp($(this).val(), 'i');
+              $('.searchable tr').hide();
+              $('.searchable tr').filter(function () {
+                  return rex.test($(this).text());
+              }).show();
+          })
+      }(jQuery));
+  });
+</script>
+
+<section>
+  <div class="container">
+    <h3><%=number_with_delimiter(@dataset_count, :delimiter => ',') %> Datasets</h3>
+
+    <div class="input-group"> <span class="input-group-addon">Filter</span>
+        <input id="filter" type="text" class="form-control" placeholder="Type here...">
+    </div>
+
+    <div class='shadowContainer'>
+      <table id='userTable'
+         data-toolbar="#toolbar"
+         data-toggle="table"
+         data-pagination="true"
+         data-show-toggle="true"
+         data-show-columns="true"
+         data-sort-order="name"
+         data-search="true"
+         data-filter-control="true"
+         class='table-striped table-responsive table-hover table-bordered regularDisplay'>
+
+          <thead>
+            <tr>
+              <th data-searchable='true' data-sortable='true' data-field='dataset'>Name</th>
+              <th data-sortable='true' data-field='title'>Title</th>
+              <th data-sortable='true' data-field='study_type'>Study Type</th>
+              <th data-sortable='true' data-field='therapeutic_area'>Therapeutic Area</th>
+              <th data-sortable='true' data-field='enrollment'>Enrollment</th>
+              <th data-sortable='true' data-field='phase'>Phase</th>
+              <th data-sortable='true' data-field='faculty_name'>Faculty</th>
+              <th data-sortable='true' data-field='sponsor_name'>Sponsor</th>
+            </tr>
+          <thead>
+
+          <tbody class='searchable'>
+            <% @datasets.each do |ds| %>
+              <tr>
+                <td><%= ds.dataset %></td>
+                <td><%= ds.title %></td>
+                <td><%= ds.study_type %></td>
+                <td><%= ds.therapeutic_area %></td>
+                <td><%= ds.enrollment %></td>
+                <td><%= ds.phase %></td>
+                <td><%= ds.faculty_name %></td>
+                <td><%= ds.sponsor_name %></td>
+              </tr>
+            <% end %>
+         </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</section>

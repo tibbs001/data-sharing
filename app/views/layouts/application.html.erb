@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic' rel='stylesheet' type='text/css'>
+  <%#
+    Configure default and controller-, and view-specific titles in
+    config/locales/en.yml. For more see:
+    https://github.com/calebthompson/title#usage
+  %>
+  <title>DCRI Data Sharing</title>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= include_gon %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body class="<%= body_class %>">
+  <header id='common-header'>
+  <h1>DCRI Data Sharing</h1>
+  </header>
+  <div class='standardLayout'>
+    <%= render "flashes" -%>
+    <%= yield %>
+    <%= render "css_overrides" %>
+  </div>
+</body>
+</html>
